@@ -442,7 +442,7 @@ exception object needs to be deleted:
     The personality routine encountered an error during phase 2,
     for instance a stack corruption.
     <p>
-    <img src=warning.gif alt="<b>NOTE</b>:">
+    <img src="warning.gif" alt="<b>NOTE</b>:">
     Normally, all errors should be reported during phase 1 by returning
     from <code>_Unwind_RaiseException</code>.
     However, landing pad code could cause stack corruption
@@ -531,12 +531,12 @@ Possibilities are:
 <p>
 If the unwinder encounters an unexpected error during phase 2,
 it should return <code>_URC_FATAL_PHASE2_ERROR</code> to its caller.
-<i>
 In C++, this will usually be <code>__cxa_throw</code>,
 which will call <code>terminate()</code>.
 
 <p>
-<img src=warning.gif alt="<b>NOTE</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
+<i>
 The unwind runtime will likely have modified the stack
 (e.g. popped frames from it) or register context,
 or landing pad code may have corrupted them.
@@ -623,7 +623,7 @@ the unwind library
 should return <code>_URC_FATAL_PHASE2_ERROR</code> to its caller.
 
 <p>
-<img src=warning.gif alt="<b>NOTE</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
 <i> Example:  <code>longjmp_unwind()</code>
 <p>
 The expected implementation of <code>longjmp_unwind()</code> is as follows.
@@ -639,7 +639,7 @@ and otherwise it will return <code>_URC_NO_REASON</code> or
 </i>
 
 <p>
-<img src=warning.gif alt="<b>NOTE</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
 <i>If a future requirement for two-phase forced unwinding were identified,
 an alternate routine could be defined to request it,
 and an <code>actions</code> parameter flag defined to support it.
@@ -660,7 +660,7 @@ performed cleanup, but did not resume normal execution.
 It causes unwinding to proceed further.
 
 <p>
-<img src=warning.gif alt="<b>NOTE 1</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
 <code>_Unwind_Resume</code> should not be used to implement rethrowing.
 To the unwinding runtime,
 the catch code that rethrows was a handler,
@@ -669,7 +669,7 @@ Rethrowing is implemented by calling <code>_Unwind_RaiseException</code>
 again with the same exception object.
 
 <p>
-<img src=warning.gif alt="<b>NOTE 2</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
 This is the only routine in the unwind library which is expected
 to be called directly by generated code:
 it will be called at the end of a landing pad in a "landing-pad" model.
@@ -809,7 +809,7 @@ This routine returns the address of the language-specific data area for
 the current stack frame.
 
 <p>
-<img src=warning.gif alt="<b>NOTE</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
 This routine is not stricly required:
 it could be accessed through <code>_Unwind_GetIP</code> using
 the documented format of the <code>UnwindInfoBlock</code>,
@@ -891,7 +891,7 @@ and the low 4 bytes indicate the language.
 For the C++ ABI described in this document,
 the low four bytes are C++\0.
 <p>
-<img src=warning.gif alt="<b>NOTE</b>:">
+<img src="warning.gif" alt="<b>NOTE</b>:">
 This is not a null-terminated string.
 Some implementations may use no null bytes.
 
@@ -1068,7 +1068,7 @@ exception if the <code>_UA_FORCE_UNWIND</code> flag was passed to
 the personality routine.
 
 <p>
-<img src=warning.gif>
+<img src="warning.gif" alt="<b>NOTE</b>:">
 <i>
 Example: Foreign Exceptions in C++.
 In C++, foreign exceptions can be caught by a catch(...) statement.
@@ -1781,7 +1781,7 @@ This routine:
 </ul>
 
 <p>
-<img src=warning.gif>
+<img src="warning.gif" alt="<b>NOTE</b>:">
 <i>
 Collaboration between <code>__cxa_rethrow()</code> and
 <code>__cxa_end_catch()</code> is necessary to handle the last point.
@@ -1886,7 +1886,7 @@ no longer being thrown or handled,
 it destroys the exception and frees the memory allocated for it.
 
 <p>
-<img src=warning.gif>
+<img src="warning.gif" alt="<b>NOTE</b>:">
 <i>
 Managing an exception lifetime occurs at runtime,
 because it is impossible to determine statically when it ends.
